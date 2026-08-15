@@ -21,14 +21,14 @@ body{font-family:'Tajawal','SF Arabic','Segoe UI','Noto Sans Arabic',Tahoma,sans
 #app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--paper)}
 button{font-family:inherit}
 .top{position:sticky;top:0;z-index:9;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:var(--paper);border-bottom:1px solid var(--line)}
-.brand .logo{font-family:'Amiri',serif;font-size:24px;font-weight:700;line-height:1;color:var(--ink)}
+.brand .logo{font-family:'Amiri',serif;font-size:23px;font-weight:700;line-height:1;color:var(--ink)}
 .acctbtn{margin-top:5px;display:flex;align-items:center;gap:5px;background:none;border:none;cursor:pointer;color:var(--ink2);font-size:12px;font-weight:700;padding:0}
 .acctbtn .av{width:18px;height:18px;border-radius:50%;background:var(--teal);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center}
 .acctbtn .cv{font-size:10px;opacity:.7}
-.streak{display:flex;flex-direction:column;align-items:center;background:#FFF8EA;border:1px solid #F0DFB8;border-radius:14px;padding:6px 12px;min-width:62px}
-.streak .flame{font-size:16px;line-height:1}
-.streak .snum{font-size:18px;font-weight:800;color:var(--gold);line-height:1.15}
-.streak .slbl{font-size:9.5px;color:var(--ink2)}
+.streak{display:flex;flex-direction:column;align-items:center;background:#FFF8EA;border:1px solid #F0DFB8;border-radius:14px;padding:6px 12px;min-width:60px}
+.streak .flame{font-size:15px;line-height:1}
+.streak .snum{font-size:17px;font-weight:800;color:var(--gold);line-height:1.15}
+.streak .slbl{font-size:9px;color:var(--ink2)}
 .content{flex:1;padding:16px 16px 100px}
 .view{display:flex;flex-direction:column;gap:14px;animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -46,48 +46,83 @@ button{font-family:inherit}
 
 .scorecard{display:flex;flex-direction:column;gap:12px}
 .scoretop{display:flex;align-items:baseline;justify-content:space-between}
-.scorebig{font-size:34px;font-weight:800;line-height:1}
-.scoremax{font-size:18px;color:var(--ink2);font-weight:700}
+.scorebig{font-size:33px;font-weight:800;line-height:1}
+.scoremax{font-size:17px;color:var(--ink2);font-weight:700}
 .scorezone{font-size:12px;font-weight:700}
 .pbar{height:12px;background:#F0ECE3;border-radius:8px;overflow:hidden;position:relative}
 .pfill{height:100%;border-radius:8px;transition:width .45s ease,background .3s}
 .ptick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.45}
-.scorehint{font-size:11.5px;color:var(--ink2);text-align:center}
+.scorehint{font-size:11px;color:var(--ink2);text-align:center;line-height:1.6}
 
-.goal2{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--card);transition:border-color .2s,background .2s}
+.slot{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
+.slot.now{border-color:#CDDCE6;box-shadow:0 0 0 3px rgba(30,122,107,.08)}
+.slothead{display:flex;align-items:center;gap:11px;padding:14px 15px;cursor:pointer;width:100%;background:none;border:none;text-align:right}
+.slothead .sem{font-size:19px}
+.slothead .stit{flex:1;font-size:14.5px;font-weight:700;color:var(--ink)}
+.slothead .nowbadge{font-size:10px;font-weight:800;color:var(--teal);background:#E6F1EE;padding:2px 8px;border-radius:20px}
+.slothead .ssum{font-size:11.5px;color:var(--ink2);font-weight:700}
+.slothead .scar{font-size:18px;color:var(--mute);width:18px;text-align:center}
+.slotbody{padding:0 13px 13px;display:flex;flex-direction:column;gap:9px}
+
+.goal2{border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:var(--paper);transition:border-color .2s,background .2s}
 .goal2.l1{border-color:#E7D3A6;background:#FCF7EC}
 .goal2.l2{border-color:#CFE6DF;background:#F2F9F7}
-.g2head{display:flex;align-items:center;gap:10px;margin-bottom:11px}
-.g2head .em{font-size:20px}
-.g2head .nm{flex:1;font-size:15px;font-weight:700}
-.g2head .pts{font-size:13px;font-weight:800}
+.g2head{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.g2head .em{font-size:18px}
+.g2head .nm{flex:1;font-size:14px;font-weight:700}
+.g2head .pts{font-size:12.5px;font-weight:800}
 .g2head .pts.p1{color:var(--gold)}.g2head .pts.p2{color:var(--teal)}
-.g2btns{display:flex;gap:9px}
-.lvlbtn{flex:1;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink2);transition:all .15s}
-.lvlbtn b{font-size:13px}
-.lvlbtn small{font-size:10.5px;opacity:.85;text-align:center;line-height:1.3}
-.lvlbtn .pv{font-size:10px;font-weight:800;opacity:.6}
+.g2btns{display:flex;gap:8px}
+.lvlbtn{flex:1;border:1.5px solid var(--line);background:var(--card);border-radius:11px;padding:8px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink2);transition:all .15s}
+.lvlbtn b{font-size:12.5px}
+.lvlbtn small{font-size:10px;opacity:.85;text-align:center;line-height:1.3}
+.lvlbtn .pv{font-size:9.5px;font-weight:800;opacity:.6}
 .lvlbtn.min.on{background:var(--gold);border-color:var(--gold);color:#fff}
 .lvlbtn.req.on{background:var(--teal);border-color:var(--teal);color:#fff}
-.lvlbtn.dim{opacity:.7}
-.notdue{font-size:11.5px;color:var(--mute);padding:2px 4px}
+.lvlbtn.dim{opacity:.65}
 
-.note{width:100%;min-height:58px;border:1px solid var(--line);border-radius:14px;padding:12px;font-family:inherit;font-size:14px;color:var(--ink);resize:vertical;background:var(--card)}
-.note::placeholder{color:var(--mute)}
+.extra{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.extra .ck{width:22px;height:22px;border-radius:7px;border:2px solid var(--mute);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;cursor:pointer}
+.extra.done .ck{background:var(--teal);border-color:var(--teal)}
+.extra .xt{flex:1;font-size:13.5px}
+.extra.done .xt{text-decoration:line-through;color:var(--mute)}
+.extra .xdel{background:none;border:none;color:var(--mute);font-size:15px;cursor:pointer;padding:2px 4px}
+.addextra{width:100%;padding:10px;border:1.5px dashed var(--mute);background:none;color:var(--ink2);border-radius:11px;cursor:pointer;font-size:12.5px;font-weight:700}
+.emptyslot{font-size:12px;color:var(--mute);text-align:center;padding:4px 0}
+
+.collcard .cch{display:flex;align-items:center;gap:10px;cursor:pointer}
+.collcard .cch .ct{flex:1;font-size:14.5px;font-weight:700}
+.collcard .cch .cc{font-size:18px;color:var(--mute)}
+.reflectbody{margin-top:14px;display:flex;flex-direction:column;gap:14px}
+.rlabel{font-size:12.5px;font-weight:700;color:var(--ink2);margin-bottom:8px}
+.emos{display:flex;flex-wrap:wrap;gap:8px}
+.emo{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--paper);border-radius:20px;padding:6px 11px;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--ink2)}
+.emo .ee{font-size:15px}
+.moodfaces{display:flex;justify-content:space-between;gap:6px}
+.face{flex:1;height:44px;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;font-size:20px;cursor:pointer;opacity:.55}
+.face.on{opacity:1;border-color:var(--teal);background:#EFF6F4;transform:translateY(-2px)}
+.rbox{width:100%;min-height:52px;border:1px solid var(--line);border-radius:12px;padding:11px;font-family:inherit;font-size:13.5px;color:var(--ink);resize:vertical;background:var(--paper)}
+.rbox::placeholder{color:var(--mute)}
 
 .mini{padding:2px}
 .minilbl{font-size:12px;color:var(--ink2);margin-bottom:7px;font-weight:700}
 .miniribbon{display:flex;gap:7px;align-items:flex-end}
 .minicol{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:0}
-.minibarwrap{width:100%;height:46px;display:flex;align-items:flex-end;background:#F2EEE5;border-radius:7px;overflow:hidden}
+.minibarwrap{width:100%;height:44px;display:flex;align-items:flex-end;background:#F2EEE5;border-radius:7px;overflow:hidden}
 .minibar{width:100%;border-radius:7px 7px 0 0;transition:height .35s ease}
-.miniday{font-size:10.5px;color:var(--ink2)}
+.miniday{font-size:10px;color:var(--ink2)}
+
+.weekrange{font-size:12px;color:var(--ink2);text-align:center;margin-top:3px}
+.axis{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:14px}
+.axishead{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.axisdot{width:12px;height:12px;border-radius:50%}
+.axisname{font-size:15px;font-weight:800}
+.axbox{width:100%;min-height:64px;border:1px solid var(--line);border-radius:12px;padding:11px;font-family:inherit;font-size:13.5px;color:var(--ink);resize:vertical;background:var(--paper)}
 
 .statrow{display:flex;gap:10px}
 .stat{flex:1;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 8px;text-align:center}
-.snum2{font-size:24px;font-weight:800;line-height:1}
-.slbl2{font-size:10.5px;color:var(--ink2);margin-top:5px}
-
+.snum2{font-size:23px;font-weight:800;line-height:1}
+.slbl2{font-size:10px;color:var(--ink2);margin-top:5px}
 .ribbonscroll{overflow-x:auto;padding-bottom:4px}
 .ribbon{position:relative;display:flex;gap:4px;align-items:flex-end;height:170px}
 .targetline{position:absolute;left:0;right:0;height:0;border-top:2px dashed var(--teal);opacity:.75;z-index:2}
@@ -101,7 +136,6 @@ button{font-family:inherit}
 .legend span{display:flex;align-items:center;gap:5px}
 .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
 .legend i.dash{width:14px;height:0;border-top:2px dashed var(--teal);border-radius:0}
-
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
 .calhead{text-align:center;font-size:10.5px;color:var(--ink2);font-weight:700;padding-bottom:2px}
 .calpad{aspect-ratio:1}
@@ -111,13 +145,12 @@ button{font-family:inherit}
 .calcell.today{outline:2px solid var(--ink);outline-offset:-2px}
 .cdot{position:absolute;top:5px;inset-inline-end:5px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
 .cscore{position:absolute;bottom:3px;inset-inline-start:5px;font-size:9px;font-weight:800;color:var(--ink2)}
-
 .ggrid{display:flex;flex-direction:column;gap:11px}
 .grow{display:flex;align-items:center;gap:10px}
 .gr-name{font-size:12.5px;width:40%;color:var(--ink)}
 .gr-bar{flex:1;height:9px;background:#F0ECE3;border-radius:6px;overflow:hidden}
 .gr-fill{display:block;height:100%;background:var(--teal);border-radius:6px;transition:width .5s ease}
-.gr-num{font-size:11px;color:var(--ink2);width:52px;text-align:left}
+.gr-num{font-size:11px;color:var(--ink2);width:56px;text-align:left}
 
 .principle p{font-size:14px;line-height:1.85;margin:0 0 8px}
 .principle .dim{color:var(--ink2);font-size:13px;margin:0}
@@ -145,23 +178,25 @@ button{font-family:inherit}
 .fl{font-size:11.5px;color:var(--ink2);font-weight:700;margin-bottom:-3px}
 .two{display:flex;gap:10px}
 .two>div{flex:1;display:flex;flex-direction:column;gap:6px}
+.slotpick{display:flex;gap:6px;flex-wrap:wrap}
+.sp{padding:7px 10px;border-radius:9px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink2);font-size:11px;font-weight:700;cursor:pointer}
+.sp.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .wdchips{display:flex;gap:6px;flex-wrap:wrap}
 .wd{width:38px;height:34px;border-radius:9px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink2);font-size:12px;font-weight:700;cursor:pointer}
 .wd.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .addbtn{width:100%;padding:14px;border:1.5px dashed var(--teal);background:#EFF6F4;color:var(--teal);font-weight:700;border-radius:14px;cursor:pointer;font-size:14px}
 .resetbtn{width:100%;padding:13px;border:1px solid #F0D6CF;background:#FCF1EE;color:var(--red);font-weight:700;border-radius:14px;cursor:pointer;font-size:13.5px}
 .foot{font-size:11.5px;color:var(--mute);text-align:center;padding:4px;line-height:1.7}
+.axedit{display:flex;gap:8px;align-items:center}
 
-.nav{position:sticky;bottom:0;display:flex;background:rgba(250,247,242,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
+.nav{position:sticky;bottom:0;display:flex;background:rgba(250,247,242,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom))}
 .navbtn{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0;color:var(--mute);border-radius:12px}
-.navic{font-size:19px;line-height:1}
-.navlbl{font-size:11px;font-weight:700}
+.navic{font-size:18px;line-height:1}
+.navlbl{font-size:10.5px;font-weight:700}
 .navbtn.on{color:var(--ink)}
 .navbtn.on .navic{color:var(--teal)}
-
 .toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--ink);color:#fff;font-size:12.5px;padding:8px 18px;border-radius:22px;opacity:0;pointer-events:none;transition:all .3s ease;z-index:30}
 .toast.show{opacity:.96;transform:translateX(-50%) translateY(0)}
-
 .overlay{position:fixed;inset:0;background:rgba(35,49,77,.45);display:flex;align-items:flex-end;justify-content:center;z-index:40}
 .sheet{background:var(--paper);width:100%;max-width:480px;border-radius:22px 22px 0 0;padding:18px 18px calc(20px + env(safe-area-inset-bottom));max-height:85vh;overflow:auto;animation:up .3s ease}
 @keyframes up{from{transform:translateY(40px);opacity:.6}to{transform:none;opacity:1}}
@@ -177,7 +212,6 @@ button{font-family:inherit}
 .sheetbtns{display:flex;gap:10px;margin-top:6px}
 .btn-primary{flex:1;padding:13px;background:var(--teal);color:#fff;border:none;border-radius:13px;font-weight:700;font-size:14px;cursor:pointer}
 .btn-ghost{flex:1;padding:13px;background:none;color:var(--ink2);border:1px solid var(--line);border-radius:13px;font-weight:700;font-size:14px;cursor:pointer}
-
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -186,48 +220,54 @@ button{font-family:inherit}
 <div id="toast" class="toast">تم الحفظ</div>
 <script>
 "use strict";
-/* ===================== storage / accounts ===================== */
-var LS="masarApp_v1";
-function uid(p){return (p||"id")+Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-3);}
+var LS="masarApp_v2";
+function uid(p){return (p||"id")+Math.random().toString(36).slice(2,7)+Date.now().toString(36).slice(-3);}
+var SLOTS=[
+ {id:"fajr",label:"الفجر → الظهر",em:"🌅"},
+ {id:"dhuhr",label:"الظهر → العصر",em:"☀️"},
+ {id:"asr",label:"العصر → المغرب",em:"🌇"},
+ {id:"maghrib",label:"المغرب → العشاء",em:"🌆"},
+ {id:"isha",label:"بعد العشاء",em:"🌙"}
+];
+var EMOS=[
+ {id:"happy",e:"😊",n:"سعادة"},{id:"calm",e:"😌",n:"طمأنينة"},{id:"grateful",e:"🤲",n:"امتنان"},
+ {id:"eager",e:"🔥",n:"حماس"},{id:"love",e:"❤️",n:"محبة"},{id:"sad",e:"😔",n:"حزن"},
+ {id:"anxious",e:"😟",n:"قلق"},{id:"angry",e:"😠",n:"غضب"},{id:"tired",e:"😮‍💨",n:"إرهاق"},{id:"bored",e:"😑",n:"فتور"}
+];
+var FACES=["😞","😕","😐","🙂","😄"];
 function defaultGoals(){return [
- {id:"thesis",emoji:"📝",name:"رسالة الماجستير",minLabel:"بلوك تركيز واحد",reqLabel:"٣ بلوكات تركيز",weekly:"٨–١٠ بلوكات",monthly:"الشهر ١: مسوّدة الفصل الأول • الشهر ٢: مراجعته والبدء فيما يليه",days:[0,1,2,3,4,5,6]},
- {id:"quran",emoji:"📖",name:"حفظ القرآن",minLabel:"نصف صفحة + مراجعة",reqLabel:"صفحة + مراجعة",weekly:"≈ ٦ صفحات + مراجعة يومية",monthly:"٣ أجزاء خلال الشهرين",days:[0,1,2,3,4,5,6]},
- {id:"english",emoji:"🗣️",name:"الإنجليزية",minLabel:"٣٠ دقيقة (حلقة + مفردات)",reqLabel:"٦٠ دقيقة (جلسة كاملة)",weekly:"٦ جلسات + ٤٠ كلمة",monthly:"الشهر ١: ٢٥٠ كلمة • الشهر ٢: ٥٠٠ كلمة",days:[0,1,2,3,4,5,6]},
- {id:"tazkiyah",emoji:"🤲",name:"التزكية",minLabel:"١٠ دقائق استماع",reqLabel:"٢٠ دقيقة استماع",weekly:"٦ أيام",monthly:"عادة يومية مستقرة",days:[0,1,2,3,4,5,6]},
- {id:"side",emoji:"✨",name:"مهمة جانبية ممتعة",minLabel:"مهمة صغيرة",reqLabel:"مهمتان",weekly:"حسب الطاقة",monthly:"—",days:[0,1,2,3,4,5,6]}
+ {id:"quran",emoji:"📖",name:"حفظ القرآن",slot:"fajr",minLabel:"نصف صفحة + مراجعة",reqLabel:"صفحة + مراجعة",weekly:"≈ ٦ صفحات",monthly:"٣ أجزاء خلال الشهرين",days:[0,1,2,3,4,5,6]},
+ {id:"thesis",emoji:"📝",name:"رسالة الماجستير",slot:"fajr",minLabel:"بلوك تركيز واحد",reqLabel:"٣ بلوكات",weekly:"٨–١٠ بلوكات",monthly:"الشهر ١: مسوّدة الفصل الأول",days:[0,1,2,3,4,5,6]},
+ {id:"english",emoji:"🗣️",name:"الإنجليزية",slot:"dhuhr",minLabel:"٣٠ دقيقة",reqLabel:"٦٠ دقيقة",weekly:"٦ جلسات + ٤٠ كلمة",monthly:"الشهر ١: ٢٥٠ كلمة",days:[0,1,2,3,4,5,6]},
+ {id:"tazkiyah",emoji:"🤲",name:"التزكية",slot:"maghrib",minLabel:"١٠ دقائق",reqLabel:"٢٠ دقيقة",weekly:"٦ أيام",monthly:"عادة يومية",days:[0,1,2,3,4,5,6]},
+ {id:"side",emoji:"✨",name:"مهمة جانبية",slot:"isha",minLabel:"مهمة صغيرة",reqLabel:"مهمتان",weekly:"حسب الطاقة",monthly:"—",days:[0,1,2,3,4,5,6]}
 ];}
-function defaultConfig(){return {goals:defaultGoals(),target:60};}
-function freshDB(){var id=uid("acc");var a={};a[id]={name:"حسابي",config:defaultConfig(),logs:{}};return {activeId:id,accounts:a};}
-function migrate(d){
- try{
-  Object.keys(d.accounts).forEach(function(k){
-   var ac=d.accounts[k]; if(!ac.config) ac.config=defaultConfig();
-   if(typeof ac.config.target!=="number") ac.config.target=60;
-   if(!Array.isArray(ac.config.goals)||!ac.config.goals.length) ac.config.goals=defaultGoals();
-   ac.config.goals.forEach(function(g){
-     if(!Array.isArray(g.days)) g.days=[0,1,2,3,4,5,6];
-     if(g.minLabel==null) g.minLabel=g.min||"";
-     if(g.reqLabel==null) g.reqLabel=g.max||g.daily||"";
-   });
-   if(!ac.logs) ac.logs={};
-  });
- }catch(e){}
- return d;
-}
-function load(){
- try{var raw=localStorage.getItem(LS);if(raw){var d=JSON.parse(raw);if(d&&d.accounts&&d.activeId&&d.accounts[d.activeId])return migrate(d);}}catch(e){}
- return freshDB();
-}
-var DB=load();
-var saveT=null;
+function defaultAxes(){return [
+ {id:"allah",name:"الله",color:"#1E7A6B"},{id:"me",name:"أنا",color:"#C2902B"},
+ {id:"salman",name:"سلمان",color:"#5E6E8C"},{id:"bait",name:"البيت",color:"#BC5A44"}
+];}
+function defaultConfig(){return {goals:defaultGoals(),target:60,axes:defaultAxes()};}
+function freshDB(){var id=uid("acc");var a={};a[id]={name:"حسابي",config:defaultConfig(),logs:{},weekly:{}};return {activeId:id,accounts:a};}
+function migrate(d){try{Object.keys(d.accounts).forEach(function(k){var ac=d.accounts[k];
+ if(!ac.config)ac.config=defaultConfig();
+ if(typeof ac.config.target!=="number")ac.config.target=60;
+ if(!Array.isArray(ac.config.goals)||!ac.config.goals.length)ac.config.goals=defaultGoals();
+ if(!Array.isArray(ac.config.axes)||!ac.config.axes.length)ac.config.axes=defaultAxes();
+ ac.config.goals.forEach(function(g){if(!Array.isArray(g.days))g.days=[0,1,2,3,4,5,6];if(!g.slot)g.slot="fajr";if(g.minLabel==null)g.minLabel=g.min||"";if(g.reqLabel==null)g.reqLabel=g.max||g.daily||"";});
+ if(!ac.logs)ac.logs={}; if(!ac.weekly)ac.weekly={};
+});}catch(e){}return d;}
+function load(){try{var raw=localStorage.getItem(LS);if(raw){var d=JSON.parse(raw);if(d&&d.accounts&&d.activeId&&d.accounts[d.activeId])return migrate(d);}}catch(e){}
+ try{var old=localStorage.getItem("masarApp_v1");if(old){var o=JSON.parse(old);if(o&&o.accounts)return migrate(o);}}catch(e){}
+ return freshDB();}
+var DB=load(),saveT=null;
 function save(){try{localStorage.setItem(LS,JSON.stringify(DB));}catch(e){}}
 function saveSoon(){clearTimeout(saveT);saveT=setTimeout(function(){save();toast();},500);}
-function toast(){var t=document.getElementById("toast");t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove("show");},1100);}
+function toast(){var t=document.getElementById("toast");if(!t)return;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove("show");},1100);}
 function acc(){return DB.accounts[DB.activeId];}
 function goals(){return acc().config.goals;}
+function axes(){return acc().config.axes;}
 function targetPct(){return acc().config.target;}
 
-/* ===================== date utils ===================== */
 function pad(n){return String(n).padStart(2,"0");}
 function keyOf(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
 function today(){var d=new Date();d.setHours(0,0,0,0);return d;}
@@ -235,279 +275,209 @@ function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
 function addMonths(d,n){var x=new Date(d);x.setMonth(x.getMonth()+n,1);return x;}
 function firstOfMonth(d){return new Date(d.getFullYear(),d.getMonth(),1);}
 function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
+function weekStart(d){return addDays(d,-((d.getDay()+1)%7));}
 function fmt(d,o,loc){try{return new Intl.DateTimeFormat(loc||"ar-EG",o).format(d);}catch(e){return "";}}
 function gregLabel(d){return fmt(d,{weekday:"long",day:"numeric",month:"long"});}
 function hijriLabel(d){return fmt(d,{day:"numeric",month:"long",year:"numeric"},"ar-SA-u-ca-islamic-umalqura");}
 function monthLabel(d){return fmt(d,{month:"long",year:"numeric"});}
+function dmLabel(d){return fmt(d,{day:"numeric",month:"short"});}
 function toAr(n){return String(n).replace(/[0-9]/g,function(x){return "٠١٢٣٤٥٦٧٨٩"[+x];}).replace(".","٫");}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 var WD_SHORT=["أحد","اثنين","ثلاثاء","أربعاء","خميس","جمعة","سبت"];
-var WD_ORDER=[6,0,1,2,3,4,5]; // Sat first
+var WD_ORDER=[6,0,1,2,3,4,5];
+function currentSlot(){var h=new Date().getHours();if(h>=4&&h<12)return "fajr";if(h>=12&&h<15)return "dhuhr";if(h>=15&&h<18)return "asr";if(h>=18&&h<20)return "maghrib";return "isha";}
 
-/* ===================== scoring ===================== */
+function emptyLog(){return {levels:{},extras:[],mood:[],moodRate:0,withSelf:"",gratitude:"",patience:""};}
+function logGet(d){return acc().logs[keyOf(d)]||emptyLog();}
+function ensureLog(d){var k=keyOf(d),l=acc().logs[k];if(!l){l=emptyLog();acc().logs[k]=l;}else{if(!l.levels)l.levels={};if(!l.extras)l.extras=[];if(!l.mood)l.mood=[];if(l.moodRate==null)l.moodRate=0;if(l.withSelf==null)l.withSelf="";if(l.gratitude==null)l.gratitude="";if(l.patience==null)l.patience="";}return l;}
 function isDue(g,d){return (g.days||[0,1,2,3,4,5,6]).indexOf(d.getDay())>=0;}
 function dueGoals(d){return goals().filter(function(g){return isDue(g,d);});}
-function logFor(d){return acc().logs[keyOf(d)]||{levels:{},note:""};}
 function levelOf(d,gid){var l=acc().logs[keyOf(d)];return l&&l.levels&&l.levels[gid]?l.levels[gid]:0;}
-function setLevel(d,gid,lvl){var k=keyOf(d);var l=acc().logs[k]||{levels:{},note:""};if(!l.levels)l.levels={};l.levels[gid]=lvl;acc().logs[k]=l;saveSoon();}
-function setNote(d,v){var k=keyOf(d);var l=acc().logs[k]||{levels:{},note:""};l.note=v;acc().logs[k]=l;saveSoon();}
+function setLevel(d,gid,lvl){ensureLog(d).levels[gid]=lvl;saveSoon();}
 function dayScore(d){var s=0;dueGoals(d).forEach(function(g){s+=levelOf(d,g.id);});return s;}
 function dayMax(d){return dueGoals(d).length*2;}
 function dayPct(d){var m=dayMax(d);return m>0?dayScore(d)/m:null;}
 function hitTarget(d){var p=dayPct(d);return p!=null&&p>=targetPct()/100;}
 function zoneColor(pct){if(pct==null)return "var(--mute)";if(pct>=targetPct()/100)return "var(--teal)";if(pct>0)return "var(--gold)";return "var(--mute)";}
+function tint(p){if(p==null)return "transparent";if(p>=targetPct()/100)return "#E6F1EE";if(p>0)return "#FBF1DD";return "#F0F1F4";}
 
-/* ===================== stats ===================== */
-function streakCount(){var s=0;var d=today();if(!hitTarget(d))d=addDays(d,-1);while(hitTarget(d)){s++;d=addDays(d,-1);}return s;}
-function monthStats(month){
- var y=month.getFullYear(),m=month.getMonth(),n=daysInMonth(y,m);
- var sumP=0,cntP=0,tgtDays=0,goalDone={},goalDue={};
- goals().forEach(function(g){goalDone[g.id]=0;goalDue[g.id]=0;});
- for(var i=1;i<=n;i++){var d=new Date(y,m,i);
-   var p=dayPct(d);
-   if(p!=null&&dayScore(d)>0){sumP+=p;cntP++;}
-   if(hitTarget(d))tgtDays++;
-   goals().forEach(function(g){if(isDue(g,d)){goalDue[g.id]++;if(levelOf(d,g.id)>=1)goalDone[g.id]++;}});
- }
- return {avg:cntP?sumP/cntP:0,cntP:cntP,tgtDays:tgtDays,goalDone:goalDone,goalDue:goalDue,n:n};
-}
+function addExtra(d,slot){var t=prompt("مهمة إضافية:");if(t==null)return;t=t.trim();if(!t)return;ensureLog(d).extras.push({id:uid("x"),text:t,slot:slot,done:false});saveSoon();render();}
+function toggleExtra(d,id){var l=ensureLog(d);l.extras.forEach(function(x){if(x.id===id)x.done=!x.done;});saveSoon();render();}
+function delExtra(d,id){var l=ensureLog(d);l.extras=l.extras.filter(function(x){return x.id!==id;});saveSoon();render();}
+function toggleEmo(d,eid){var l=ensureLog(d);var i=l.mood.indexOf(eid);if(i>=0)l.mood.splice(i,1);else l.mood.push(eid);saveSoon();render();}
+function setMoodRate(d,r){var l=ensureLog(d);l.moodRate=(l.moodRate===r?0:r);saveSoon();render();}
+function setField(d,f,v){ensureLog(d)[f]=v;saveSoon();}
 
-/* ===================== UI state ===================== */
-var ui={tab:"today",sel:today(),month:firstOfMonth(today()),modal:null};
+function weeklyGet(wk){return acc().weekly[wk]||{};}
+function setWeekly(wk,ax,v){if(!acc().weekly[wk])acc().weekly[wk]={};acc().weekly[wk][ax]=v;saveSoon();}
+
+function streakCount(){var s=0,d=today();if(!hitTarget(d))d=addDays(d,-1);while(hitTarget(d)){s++;d=addDays(d,-1);}return s;}
+function monthStats(month){var y=month.getFullYear(),m=month.getMonth(),n=daysInMonth(y,m);var sumP=0,cntP=0,tgt=0,gd={},gu={};goals().forEach(function(g){gd[g.id]=0;gu[g.id]=0;});
+ for(var i=1;i<=n;i++){var d=new Date(y,m,i);var p=dayPct(d);if(p!=null&&dayScore(d)>0){sumP+=p;cntP++;}if(hitTarget(d))tgt++;goals().forEach(function(g){if(isDue(g,d)){gu[g.id]++;if(levelOf(d,g.id)>=1)gd[g.id]++;}});}
+ return {avg:cntP?sumP/cntP:0,cntP:cntP,tgtDays:tgt,goalDone:gd,goalDue:gu,n:n};}
+
+var ui={tab:"today",sel:today(),month:firstOfMonth(today()),week:weekStart(today()),modal:null,openSlot:currentSlot(),openReflect:false,open:null};
 var app=document.getElementById("app");
+function render(){var h=headerHTML()+'<main class="content">'+views[ui.tab]()+'</main>'+navHTML();app.innerHTML=h;if(ui.modal)app.insertAdjacentHTML("beforeend",modalHTML());bind();}
 
-function render(){
- var html="";
- html+=headerHTML();
- html+='<main class="content">'+views[ui.tab]()+'</main>';
- html+=navHTML();
- app.innerHTML=html;
- if(ui.modal) app.insertAdjacentHTML("beforeend",modalHTML());
- bind();
-}
-
-function headerHTML(){
- var name=acc().name||"حسابي";
- return '<header class="top">'
- +'<div class="brand"><div class="logo">مسار الإنجاز</div>'
+function headerHTML(){var name=acc().name||"حسابي";
+ return '<header class="top"><div class="brand"><div class="logo">مسار الإنجاز</div>'
  +'<button class="acctbtn" data-act="accts"><span class="av">'+esc(name.slice(0,1))+'</span><span>'+esc(name)+'</span><span class="cv">▾</span></button></div>'
- +'<div class="streak" title="أيام متتالية فوق خط الهدف"><span class="flame">🔥</span><span class="snum">'+toAr(streakCount())+'</span><span class="slbl">متتالية</span></div>'
- +'</header>';
-}
-function navHTML(){
- var items=[["today","اليوم","◷"],["tracker","المتابعة","▤"],["plan","الخطة","❏"],["settings","الإعدادات","⚙"]];
- return '<nav class="nav">'+items.map(function(it){return '<button class="navbtn'+(ui.tab===it[0]?" on":"")+'" data-tab="'+it[0]+'"><span class="navic">'+it[2]+'</span><span class="navlbl">'+it[1]+'</span></button>';}).join("")+'</nav>';
-}
+ +'<div class="streak"><span class="flame">🔥</span><span class="snum">'+toAr(streakCount())+'</span><span class="slbl">متتالية</span></div></header>';}
+function navHTML(){var items=[["today","اليوم","◷"],["week","الأسبوع","❖"],["tracker","المتابعة","▤"],["plan","الخطة","❏"],["settings","الإعدادات","⚙"]];
+ return '<nav class="nav">'+items.map(function(it){return '<button class="navbtn'+(ui.tab===it[0]?" on":"")+'" data-tab="'+it[0]+'"><span class="navic">'+it[2]+'</span><span class="navlbl">'+it[1]+'</span></button>';}).join("")+'</nav>';}
 
 /* ---------- Today ---------- */
-function views_today(){
- var d=ui.sel, isToday=keyOf(d)===keyOf(today());
- var due=dueGoals(d), notDue=goals().filter(function(g){return !isDue(g,d);});
- var sc=dayScore(d), mx=dayMax(d), pct=dayPct(d);
- var zoneTxt = pct==null?"لا أهداف مجدولة اليوم":(pct>=targetPct()/100?"فوق الهدف — استمر ✦":(pct>0?"تحت الهدف — اقترب":"يوم متوقّف"));
- var log=logFor(d);
- var last7=[]; for(var i=-6;i<=0;i++) last7.push(addDays(d,i));
-
+function views_today(){var d=ui.sel,isT=keyOf(d)===keyOf(today());var log=logGet(d);
+ var sc=dayScore(d),mx=dayMax(d),pct=dayPct(d);
+ var zoneTxt=pct==null?"لا مهام مخططة اليوم":(pct>=targetPct()/100?"فوق الهدف — استمر ✦":(pct>0?"تحت الهدف — اقترب":"يوم متوقّف"));
  var h='<div class="view">';
- // date nav
- h+='<div class="datenav card"><button class="arrow" data-act="dprev">‹</button>'
-  +'<div class="dwrap"><div class="dgreg">'+esc(gregLabel(d))+'</div><div class="dhijri">'+esc(hijriLabel(d))+'</div>'
-  +(isToday?"":'<button class="todaybtn" data-act="dtoday">العودة لليوم</button>')+'</div>'
-  +'<button class="arrow" data-act="dnext">›</button></div>';
- // score
- var tgtLeft=(targetPct())+"%";
- h+='<div class="card scorecard"><div class="scoretop">'
-  +'<div><span class="scorebig" style="color:'+zoneColor(pct)+'">'+(mx?toAr(sc):"—")+'</span> <span class="scoremax">/ '+toAr(mx)+'</span></div>'
-  +'<span class="scorezone" style="color:'+zoneColor(pct)+'">'+zoneTxt+'</span></div>'
-  +'<div class="pbar"><span class="pfill" style="width:'+(pct==null?0:Math.round(pct*100))+'%;background:'+zoneColor(pct)+'"></span><span class="ptick" style="inset-inline-start:'+tgtLeft+'"></span></div>'
-  +'<div class="scorehint">درجة اليوم تُحسب تلقائيًا: الحد الأدنى +١ • الحد المطلوب +٢. خط الهدف عند '+toAr(targetPct())+'٪.</div></div>';
- // goals
- h+='<div class="seclbl">مهام اليوم — اختر مستوى الإنجاز</div>';
- due.forEach(function(g){
-   var lv=levelOf(d,g.id);
-   h+='<div class="goal2 '+(lv===1?"l1":lv===2?"l2":"")+'">'
-    +'<div class="g2head"><span class="em">'+esc(g.emoji)+'</span><span class="nm">'+esc(g.name)+'</span>'
-    +(lv?'<span class="pts p'+lv+'">'+(lv===2?"+٢":"+١")+'</span>':'')+'</div>'
-    +'<div class="g2btns">'
-    +'<button class="lvlbtn min'+(lv===1?" on":"")+(lv===2?" dim":"")+'" data-act="lvl" data-g="'+g.id+'" data-l="1"><b>الحد الأدنى</b><small>'+esc(g.minLabel||"")+'</small><span class="pv">+١</span></button>'
-    +'<button class="lvlbtn req'+(lv===2?" on":"")+'" data-act="lvl" data-g="'+g.id+'" data-l="2"><b>الحد المطلوب</b><small>'+esc(g.reqLabel||"")+'</small><span class="pv">+٢</span></button>'
-    +'</div></div>';
+ h+='<div class="datenav card"><button class="arrow" data-act="dprev">‹</button><div class="dwrap"><div class="dgreg">'+esc(gregLabel(d))+'</div><div class="dhijri">'+esc(hijriLabel(d))+'</div>'+(isT?"":'<button class="todaybtn" data-act="dtoday">العودة لليوم</button>')+'</div><button class="arrow" data-act="dnext">›</button></div>';
+ h+='<div class="card scorecard"><div class="scoretop"><div><span class="scorebig" style="color:'+zoneColor(pct)+'">'+(mx?toAr(sc):"—")+'</span> <span class="scoremax">/ '+toAr(mx)+'</span></div><span class="scorezone" style="color:'+zoneColor(pct)+'">'+zoneTxt+'</span></div>'
+ +'<div class="pbar"><span class="pfill" style="width:'+(pct==null?0:Math.round(pct*100))+'%;background:'+zoneColor(pct)+'"></span><span class="ptick" style="inset-inline-start:'+targetPct()+'%"></span></div>'
+ +'<div class="scorehint">المهام المخططة تُحسب تلقائيًا: الحد الأدنى +١ • الحد المطلوب +٢. خط الهدف '+toAr(targetPct())+'٪.</div></div>';
+ // slots
+ h+='<div class="seclbl">اليوم موزّع على الأوقات</div>';
+ SLOTS.forEach(function(s){
+   var sg=dueGoals(d).filter(function(g){return (g.slot||"fajr")===s.id;});
+   var sx=(log.extras||[]).filter(function(x){return x.slot===s.id;});
+   var doneG=sg.filter(function(g){return levelOf(d,g.id)>=1;}).length;
+   var doneX=sx.filter(function(x){return x.done;}).length;
+   var totalItems=sg.length+sx.length;
+   var isNow=isT&&s.id===currentSlot();
+   var isOpen=ui.openSlot===s.id;
+   h+='<div class="slot'+(isNow?" now":"")+'"><button class="slothead" data-act="slot" data-s="'+s.id+'"><span class="sem">'+s.em+'</span><span class="stit">'+s.label+'</span>'+(isNow?'<span class="nowbadge">الآن</span>':'')+'<span class="ssum">'+(totalItems?toAr(doneG+doneX)+'/'+toAr(totalItems):'—')+'</span><span class="scar">'+(isOpen?"−":"+")+'</span></button>';
+   if(isOpen){h+='<div class="slotbody">';
+     sg.forEach(function(g){var lv=levelOf(d,g.id);
+       h+='<div class="goal2 '+(lv===1?"l1":lv===2?"l2":"")+'"><div class="g2head"><span class="em">'+esc(g.emoji)+'</span><span class="nm">'+esc(g.name)+'</span>'+(lv?'<span class="pts p'+lv+'">'+(lv===2?"+٢":"+١")+'</span>':'')+'</div><div class="g2btns">'
+        +'<button class="lvlbtn min'+(lv===1?" on":"")+(lv===2?" dim":"")+'" data-act="lvl" data-g="'+g.id+'" data-l="1"><b>الحد الأدنى</b><small>'+esc(g.minLabel||"")+'</small><span class="pv">+١</span></button>'
+        +'<button class="lvlbtn req'+(lv===2?" on":"")+'" data-act="lvl" data-g="'+g.id+'" data-l="2"><b>الحد المطلوب</b><small>'+esc(g.reqLabel||"")+'</small><span class="pv">+٢</span></button></div></div>';
+     });
+     sx.forEach(function(x){h+='<div class="extra'+(x.done?" done":"")+'"><button class="ck" data-act="extra" data-x="'+x.id+'">'+(x.done?"✓":"")+'</button><span class="xt">'+esc(x.text)+'</span><button class="xdel" data-act="delextra" data-x="'+x.id+'">×</button></div>';});
+     if(!sg.length&&!sx.length)h+='<div class="emptyslot">لا مهام لهذا الوقت</div>';
+     h+='<button class="addextra" data-act="addextra" data-s="'+s.id+'">＋ مهمة إضافية لهذا الوقت</button>';
+   h+='</div>';}
+   h+='</div>';
  });
- if(notDue.length) h+='<div class="notdue">غير مجدولة اليوم: '+notDue.map(function(g){return esc(g.name);}).join(" • ")+'</div>';
- // note
- h+='<textarea class="note" id="note" placeholder="ملاحظة اليوم — أي مفاجأة عطّلتني؟">'+esc(log.note||"")+'</textarea>';
+ // reflection
+ h+='<div class="card collcard"><div class="cch" data-act="togreflect"><span style="font-size:18px">🪞</span><span class="ct">تأمّل اليوم</span><span class="cc">'+(ui.openReflect?"−":"+")+'</span></div>';
+ if(ui.openReflect){h+='<div class="reflectbody">';
+   h+='<div><div class="rlabel">عجلة المشاعر — كيف كان شعورك اليوم؟</div><div class="emos">'+EMOS.map(function(em){var on=(log.mood||[]).indexOf(em.id)>=0;return '<button class="emo" data-act="emo" data-e="'+em.id+'" style="'+(on?"border-color:var(--teal);background:#EFF6F4;color:var(--ink)":"")+'"><span class="ee">'+em.e+'</span>'+em.n+'</button>';}).join("")+'</div></div>';
+   h+='<div><div class="rlabel">تقييم يومك شعوريًا</div><div class="moodfaces">'+FACES.map(function(f,i){var on=log.moodRate===i+1;return '<button class="face'+(on?" on":"")+'" data-act="mood" data-m="'+(i+1)+'">'+f+'</button>';}).join("")+'</div></div>';
+   h+='<div><div class="rlabel">مع نفسي — مواقف مرّت عليّ اليوم</div><textarea class="rbox" id="r-self" placeholder="اكتب ما مرّ بك اليوم...">'+esc(log.withSelf||"")+'</textarea></div>';
+   h+='<div><div class="rlabel">أحمد الله على</div><textarea class="rbox" id="r-grat" placeholder="نعمة أشكر الله عليها اليوم...">'+esc(log.gratitude||"")+'</textarea></div>';
+   h+='<div><div class="rlabel">صبرت على</div><textarea class="rbox" id="r-pat" placeholder="ما صبرت عليه اليوم...">'+esc(log.patience||"")+'</textarea></div>';
+ h+='</div>';}
+ h+='</div>';
  // mini ribbon
  h+='<div class="mini"><div class="minilbl">آخر ٧ أيام</div><div class="miniribbon">';
- last7.forEach(function(dd){var p=dayPct(dd);var hgt=p==null?3:Math.max(p*100,5);
-   h+='<button class="minicol" data-act="goday" data-k="'+keyOf(dd)+'"><span class="minibarwrap"><span class="minibar" style="height:'+hgt+'%;background:'+(p==null?"var(--line)":zoneColor(p))+'"></span></span><span class="miniday">'+toAr(dd.getDate())+'</span></button>';
- });
+ for(var i=-6;i<=0;i++){var dd=addDays(d,i);var p=dayPct(dd);var hgt=p==null?3:Math.max(p*100,5);h+='<button class="minicol" data-act="goday" data-k="'+keyOf(dd)+'"><span class="minibarwrap"><span class="minibar" style="height:'+hgt+'%;background:'+(p==null?"var(--line)":zoneColor(p))+'"></span></span><span class="miniday">'+toAr(dd.getDate())+'</span></button>';}
  h+='</div></div></div>';
  return h;
 }
 
-/* ---------- Tracker ---------- */
-function views_tracker(){
- var month=ui.month,y=month.getFullYear(),m=month.getMonth(),n=daysInMonth(y,m);
- var days=[];for(var i=1;i<=n;i++)days.push(new Date(y,m,i));
- var st=monthStats(month);
- var firstCol=(new Date(y,m,1).getDay()+1)%7;
- // target line geometry
- var ribH=170, lblH=21, barArea=ribH-lblH, lineBottom=lblH+barArea*targetPct()/100;
+/* ---------- Week ---------- */
+function views_week(){var ws=ui.week,we=addDays(ws,6),wk=keyOf(ws),data=weeklyGet(wk);
+ var h='<div class="view"><div class="datenav card"><button class="arrow" data-act="wprev">‹</button><div class="dwrap"><div class="dgreg">أهداف الأسبوع</div><div class="weekrange">'+esc(dmLabel(ws))+' — '+esc(dmLabel(we))+'</div></div><button class="arrow" data-act="wnext">›</button></div>';
+ h+='<div class="seclbl">اكتب أهدافك تحت كل محور</div>';
+ axes().forEach(function(a){h+='<div class="axis"><div class="axishead"><span class="axisdot" style="background:'+(a.color||"#1E7A6B")+'"></span><span class="axisname">'+esc(a.name)+'</span></div><textarea class="axbox" data-ax="'+a.id+'" placeholder="أهدافي في محور '+esc(a.name)+' هذا الأسبوع...">'+esc(data[a.id]||"")+'</textarea></div>';});
+ h+='</div>';return h;}
 
- var h='<div class="view">';
- h+='<div class="datenav card"><button class="arrow" data-act="mprev">‹</button><div class="dwrap"><div class="dgreg">'+esc(monthLabel(month))+'</div></div><button class="arrow" data-act="mnext">›</button></div>';
- h+='<div class="statrow">'
-  +'<div class="stat"><div class="snum2" style="color:var(--gold)">'+toAr(streakCount())+'</div><div class="slbl2">سلسلة متتالية</div></div>'
-  +'<div class="stat"><div class="snum2" style="color:'+(st.avg>=targetPct()/100?"var(--teal)":"var(--ink)")+'">'+(st.cntP?toAr(Math.round(st.avg*100))+"٪":"—")+'</div><div class="slbl2">متوسط الإنجاز</div></div>'
-  +'<div class="stat"><div class="snum2" style="color:var(--teal)">'+toAr(st.tgtDays)+'</div><div class="slbl2">أيام فوق الهدف</div></div>'
-  +'</div>';
- // chart
- h+='<div class="card"><div class="lbl">شريط الزخم — '+esc(monthLabel(month))+'</div><div class="ribbonscroll"><div class="ribbon" style="min-width:'+(n*22)+'px;height:'+ribH+'px">';
- h+='<div class="targetline" style="bottom:'+lineBottom+'px"></div>';
- days.forEach(function(dd){var p=dayPct(dd);var isT=keyOf(dd)===keyOf(today());var isS=keyOf(dd)===keyOf(ui.sel);
-   var hgt=p==null?0:Math.max(p*100,4);
-   h+='<button class="col'+(isT?" today":"")+(isS?" sel":"")+'" data-act="goday" data-k="'+keyOf(dd)+'"><span class="barwrap"><span class="bar" style="height:'+hgt+'%;background:'+zoneColor(p)+'"></span></span><span class="cday">'+toAr(dd.getDate())+'</span></button>';
- });
+/* ---------- Tracker ---------- */
+function views_tracker(){var month=ui.month,y=month.getFullYear(),m=month.getMonth(),n=daysInMonth(y,m);var days=[];for(var i=1;i<=n;i++)days.push(new Date(y,m,i));var st=monthStats(month);var firstCol=(new Date(y,m,1).getDay()+1)%7;var ribH=170,lblH=21,barArea=ribH-lblH,lineBottom=lblH+barArea*targetPct()/100;
+ var h='<div class="view"><div class="datenav card"><button class="arrow" data-act="mprev">‹</button><div class="dwrap"><div class="dgreg">'+esc(monthLabel(month))+'</div></div><button class="arrow" data-act="mnext">›</button></div>';
+ h+='<div class="statrow"><div class="stat"><div class="snum2" style="color:var(--gold)">'+toAr(streakCount())+'</div><div class="slbl2">سلسلة متتالية</div></div><div class="stat"><div class="snum2" style="color:'+(st.avg>=targetPct()/100?"var(--teal)":"var(--ink)")+'">'+(st.cntP?toAr(Math.round(st.avg*100))+"٪":"—")+'</div><div class="slbl2">متوسط الإنجاز</div></div><div class="stat"><div class="snum2" style="color:var(--teal)">'+toAr(st.tgtDays)+'</div><div class="slbl2">أيام فوق الهدف</div></div></div>';
+ h+='<div class="card"><div class="lbl">شريط الزخم — '+esc(monthLabel(month))+'</div><div class="ribbonscroll"><div class="ribbon" style="min-width:'+(n*22)+'px;height:'+ribH+'px"><div class="targetline" style="bottom:'+lineBottom+'px"></div>';
+ days.forEach(function(dd){var p=dayPct(dd);var isTo=keyOf(dd)===keyOf(today());var isS=keyOf(dd)===keyOf(ui.sel);var hgt=p==null?0:Math.max(p*100,4);h+='<button class="col'+(isTo?" today":"")+(isS?" sel":"")+'" data-act="goday" data-k="'+keyOf(dd)+'"><span class="barwrap"><span class="bar" style="height:'+hgt+'%;background:'+zoneColor(p)+'"></span></span><span class="cday">'+toAr(dd.getDate())+'</span></button>';});
  h+='</div></div><div class="legend"><span><i style="background:var(--teal)"></i>فوق الهدف</span><span><i style="background:var(--gold)"></i>تحت الهدف</span><span><i style="background:var(--mute)"></i>متوقّف</span><span><i class="dash"></i>الهدف ('+toAr(targetPct())+'٪)</span></div></div>';
- // calendar
  h+='<div class="card"><div class="lbl">التقويم — اضغط أي يوم لتسجيله</div><div class="cal">';
  WD_ORDER.forEach(function(wi){h+='<div class="calhead">'+WD_SHORT[wi]+'</div>';});
  for(var p2=0;p2<firstCol;p2++)h+='<div class="calpad"></div>';
- days.forEach(function(dd){var p=dayPct(dd);var isFri=dd.getDay()===5;var isT=keyOf(dd)===keyOf(today());
-   var bg=p==null?"":("background:"+tint(p)+";border-color:"+zoneColor(p));
-   h+='<button class="calcell'+(isT?" today":"")+(isFri?" fri":"")+'" data-act="goday" data-k="'+keyOf(dd)+'" style="'+bg+'"><span class="cnum">'+toAr(dd.getDate())+'</span>'+(hitTarget(dd)?'<span class="cdot"></span>':"")+(p!=null&&dayMax(dd)?'<span class="cscore">'+toAr(dayScore(dd))+'</span>':"")+'</button>';
- });
+ days.forEach(function(dd){var p=dayPct(dd);var isFri=dd.getDay()===5;var isTo=keyOf(dd)===keyOf(today());var bg=p==null?"":("background:"+tint(p)+";border-color:"+zoneColor(p));h+='<button class="calcell'+(isTo?" today":"")+(isFri?" fri":"")+'" data-act="goday" data-k="'+keyOf(dd)+'" style="'+bg+'"><span class="cnum">'+toAr(dd.getDate())+'</span>'+(hitTarget(dd)?'<span class="cdot"></span>':"")+(p!=null&&dayMax(dd)?'<span class="cscore">'+toAr(dayScore(dd))+'</span>':"")+'</button>';});
  h+='</div></div>';
- // per goal
  h+='<div class="card"><div class="lbl">إنجاز الأهداف هذا الشهر</div><div class="ggrid">';
- goals().forEach(function(g){var done=st.goalDone[g.id]||0,due=st.goalDue[g.id]||0;var pc=due?Math.round(done/due*100):0;
-   h+='<div class="grow"><span class="gr-name">'+esc(g.emoji)+' '+esc(g.name)+'</span><span class="gr-bar"><span class="gr-fill" style="width:'+pc+'%"></span></span><span class="gr-num">'+toAr(done)+'/'+toAr(due)+' يوم</span></div>';
- });
- h+='</div></div></div>';
- return h;
-}
-function tint(p){if(p==null)return "transparent";if(p>=targetPct()/100)return "#E6F1EE";if(p>0)return "#FBF1DD";return "#F0F1F4";}
+ goals().forEach(function(g){var done=st.goalDone[g.id]||0,due=st.goalDue[g.id]||0;var pc=due?Math.round(done/due*100):0;h+='<div class="grow"><span class="gr-name">'+esc(g.emoji)+' '+esc(g.name)+'</span><span class="gr-bar"><span class="gr-fill" style="width:'+pc+'%"></span></span><span class="gr-num">'+toAr(done)+'/'+toAr(due)+' يوم</span></div>';});
+ h+='</div></div></div>';return h;}
 
 /* ---------- Plan ---------- */
-function views_plan(){
- var h='<div class="view"><div class="card principle"><div class="lbl">قاعدة الخطة</div>'
-  +'<p>لا تخطّط بنسبة ١٠٠٪. اليوم = <b>نواة ثابتة</b> + <b>منطقة مرنة</b> + <b>يوم احتياطي (الجمعة)</b>. المفاجآت تأكل من المرن والاحتياطي ولا تلمس النواة.</p>'
-  +'<p class="dim">ابدأ أي مهمة بـ ٥ دقائق فقط — الحركة تجرّ الحافز. اربط بداياتك بالصلوات.</p></div>';
- goals().forEach(function(g){
-   var sched=(g.days&&g.days.length===7)?"يوميًا":(g.days&&g.days.length?WD_ORDER.filter(function(w){return g.days.indexOf(w)>=0;}).map(function(w){return WD_SHORT[w];}).join("، "):"غير مجدول");
-   h+='<div class="card goalcard" data-act="togglegoal" data-g="'+g.id+'"><div class="gchead"><span class="em" style="font-size:20px">'+esc(g.emoji)+'</span><span class="nm">'+esc(g.name)+'</span><span class="caret">'+(ui.open===g.id?"−":"+")+'</span></div>'
-    +'<div class="gcsched">المواعيد: '+esc(sched)+'</div>';
-   if(ui.open===g.id){
-     h+='<div class="gcdetail">'
-      +'<div class="drow"><span class="dk">الحد الأدنى</span><span class="dv">'+esc(g.minLabel||"—")+'</span></div>'
-      +'<div class="drow"><span class="dk">الحد المطلوب</span><span class="dv">'+esc(g.reqLabel||"—")+'</span></div>'
-      +'<div class="drow"><span class="dk">أسبوعيًا</span><span class="dv">'+esc(g.weekly||"—")+'</span></div>'
-      +'<div class="drow"><span class="dk">شهريًا</span><span class="dv">'+esc(g.monthly||"—")+'</span></div></div>';
-   }
-   h+='</div>';
- });
- h+='</div>';
- return h;
-}
+function views_plan(){var h='<div class="view"><div class="card principle"><div class="lbl">قاعدة الخطة</div><p>لا تخطّط بنسبة ١٠٠٪. اليوم = <b>نواة ثابتة</b> + <b>منطقة مرنة</b> + <b>يوم احتياطي (الجمعة)</b>. المفاجآت تأكل من المرن والاحتياطي ولا تلمس النواة.</p><p class="dim">ابدأ أي مهمة بـ ٥ دقائق فقط — الحركة تجرّ الحافز. اربط بداياتك بالصلوات.</p></div>';
+ goals().forEach(function(g){var sched=(g.days&&g.days.length===7)?"يوميًا":(g.days&&g.days.length?WD_ORDER.filter(function(w){return g.days.indexOf(w)>=0;}).map(function(w){return WD_SHORT[w];}).join("، "):"غير مجدول");var sl=(SLOTS.filter(function(s){return s.id===(g.slot||"fajr");})[0]||SLOTS[0]).label;
+   h+='<div class="card goalcard" data-act="togglegoal" data-g="'+g.id+'"><div class="gchead"><span style="font-size:20px">'+esc(g.emoji)+'</span><span class="nm">'+esc(g.name)+'</span><span class="caret">'+(ui.open===g.id?"−":"+")+'</span></div><div class="gcsched">'+esc(sl)+' • '+esc(sched)+'</div>';
+   if(ui.open===g.id){h+='<div class="gcdetail"><div class="drow"><span class="dk">الحد الأدنى</span><span class="dv">'+esc(g.minLabel||"—")+'</span></div><div class="drow"><span class="dk">الحد المطلوب</span><span class="dv">'+esc(g.reqLabel||"—")+'</span></div><div class="drow"><span class="dk">أسبوعيًا</span><span class="dv">'+esc(g.weekly||"—")+'</span></div><div class="drow"><span class="dk">شهريًا</span><span class="dv">'+esc(g.monthly||"—")+'</span></div></div>';}
+   h+='</div>';});
+ h+='</div>';return h;}
 
 /* ---------- Settings ---------- */
-function views_settings(){
- var h='<div class="view">';
- h+='<div class="card"><div class="lbl">خط الهدف</div><div class="targetrow">'
-  +'<div class="tgtlbl">يبقى إنجاز يومك فوق <span id="tgtval">'+toAr(targetPct())+'٪</span></div>'
-  +'<input class="range" id="tgt" type="range" min="0" max="100" step="5" value="'+targetPct()+'">'
-  +'<div class="dim">٥٠٪ = تحقيق الحد الأدنى لكل أهداف اليوم. ١٠٠٪ = تحقيق الحد المطلوب لكلّها.</div></div></div>';
- h+='<div class="seclbl">الأهداف — عدّل الحدود والمواعيد</div>';
- goals().forEach(function(g){
-   h+='<div class="card editgoal" data-gid="'+g.id+'">'
-    +'<div class="eg-top"><input class="ip emoji" data-f="emoji" value="'+esc(g.emoji)+'" maxlength="2"><input class="ip name" data-f="name" value="'+esc(g.name)+'"><button class="del" data-act="delgoal" data-g="'+g.id+'">حذف</button></div>'
-    +'<label class="fl">الحد الأدنى (+١)</label><input class="ip" data-f="minLabel" value="'+esc(g.minLabel||"")+'">'
-    +'<label class="fl">الحد المطلوب يوميًا (+٢)</label><input class="ip" data-f="reqLabel" value="'+esc(g.reqLabel||"")+'">'
-    +'<div class="two"><div><label class="fl">أسبوعيًا</label><input class="ip" data-f="weekly" value="'+esc(g.weekly||"")+'"></div>'
-    +'<div><label class="fl">شهريًا</label><input class="ip" data-f="monthly" value="'+esc(g.monthly||"")+'"></div></div>'
-    +'<label class="fl">أيام الهدف في الأسبوع</label><div class="wdchips">'
-    +WD_ORDER.map(function(w){return '<button class="wd'+((g.days||[]).indexOf(w)>=0?" on":"")+'" data-act="wd" data-g="'+g.id+'" data-d="'+w+'">'+WD_SHORT[w]+'</button>';}).join("")
-    +'</div></div>';
- });
+function views_settings(){var h='<div class="view"><div class="card"><div class="lbl">خط الهدف</div><div class="targetrow"><div class="tgtlbl">يبقى إنجاز يومك فوق <span id="tgtval">'+toAr(targetPct())+'٪</span></div><input class="range" id="tgt" type="range" min="0" max="100" step="5" value="'+targetPct()+'"><div class="dim">٥٠٪ = الحد الأدنى لكل أهداف اليوم. ١٠٠٪ = الحد المطلوب لكلّها.</div></div></div>';
+ h+='<div class="seclbl">الأهداف — الحدود والوقت والمواعيد</div>';
+ goals().forEach(function(g){h+='<div class="card editgoal" data-gid="'+g.id+'"><div class="eg-top"><input class="ip emoji" data-f="emoji" value="'+esc(g.emoji)+'" maxlength="2"><input class="ip name" data-f="name" value="'+esc(g.name)+'"><button class="del" data-act="delgoal" data-g="'+g.id+'">حذف</button></div>'
+  +'<label class="fl">الحد الأدنى (+١)</label><input class="ip" data-f="minLabel" value="'+esc(g.minLabel||"")+'">'
+  +'<label class="fl">الحد المطلوب يوميًا (+٢)</label><input class="ip" data-f="reqLabel" value="'+esc(g.reqLabel||"")+'">'
+  +'<label class="fl">وقت الهدف في اليوم</label><div class="slotpick">'+SLOTS.map(function(s){return '<button class="sp'+((g.slot||"fajr")===s.id?" on":"")+'" data-act="setslot" data-g="'+g.id+'" data-s="'+s.id+'">'+s.em+' '+s.label+'</button>';}).join("")+'</div>'
+  +'<label class="fl">أيام الهدف في الأسبوع</label><div class="wdchips">'+WD_ORDER.map(function(w){return '<button class="wd'+((g.days||[]).indexOf(w)>=0?" on":"")+'" data-act="wd" data-g="'+g.id+'" data-d="'+w+'">'+WD_SHORT[w]+'</button>';}).join("")+'</div>'
+  +'<div class="two"><div><label class="fl">أسبوعيًا</label><input class="ip" data-f="weekly" value="'+esc(g.weekly||"")+'"></div><div><label class="fl">شهريًا</label><input class="ip" data-f="monthly" value="'+esc(g.monthly||"")+'"></div></div></div>';});
  h+='<button class="addbtn" data-act="addgoal">＋ إضافة هدف</button>';
+ h+='<div class="seclbl">محاور الأسبوع</div><div class="card">'+axes().map(function(a){return '<div class="axedit" style="margin-bottom:9px"><span class="axisdot" style="background:'+(a.color||"#1E7A6B")+'"></span><input class="ip" data-axf="'+a.id+'" value="'+esc(a.name)+'"><button class="del" data-act="delaxis" data-a="'+a.id+'">حذف</button></div>';}).join("")+'<button class="addbtn" data-act="addaxis" style="margin-top:4px">＋ إضافة محور</button></div>';
  h+='<button class="resetbtn" data-act="reset">مسح سجلات هذا الحساب</button>';
- h+='<div class="foot">يُحفظ تقدّمك تلقائيًا على هذا الجهاز. لإضافته كأيقونة: من المتصفح اختر «إضافة إلى الشاشة الرئيسية».</div>';
- h+='</div>';
- return h;
-}
+ h+='<div class="foot">يُحفظ تقدّمك تلقائيًا على هذا الجهاز. لإضافته كأيقونة: من المتصفح اختر «إضافة إلى الشاشة الرئيسية».</div></div>';return h;}
 
-var views={today:views_today,tracker:views_tracker,plan:views_plan,settings:views_settings};
+var views={today:views_today,week:views_week,tracker:views_tracker,plan:views_plan,settings:views_settings};
 
-/* ---------- Accounts modal ---------- */
-function modalHTML(){
- if(ui.modal!=="accts")return "";
- var ids=Object.keys(DB.accounts);
- var rows=ids.map(function(id){var a=DB.accounts[id];var cur=id===DB.activeId;
-   return '<div class="acct'+(cur?" cur":"")+'"><span class="ava">'+esc((a.name||"؟").slice(0,1))+'</span><span class="anm">'+esc(a.name||"بدون اسم")+'</span>'
-   +(cur?'<span class="cur-tag">الحالي</span>':'<button class="pick" data-act="switch" data-id="'+id+'">تبديل</button>')
-   +'<button class="iconbtn" data-act="rename" data-id="'+id+'">✎</button>'
-   +(ids.length>1?'<button class="iconbtn" data-act="delacc" data-id="'+id+'">🗑</button>':'')
-   +'</div>';
- }).join("");
- return '<div class="overlay"><div class="sheet">'
-  +'<div class="shtitle">الحسابات</div><div class="shsub">لكل حساب أهدافه وسجلّاته المستقلة.</div>'
-  +rows
-  +'<div class="sheetbtns"><button class="btn-primary" data-act="newacc">＋ حساب جديد</button><button class="btn-ghost" data-act="closemodal">إغلاق</button></div>'
-  +'</div></div>';
-}
+function modalHTML(){if(ui.modal!=="accts")return "";var ids=Object.keys(DB.accounts);var rows=ids.map(function(id){var a=DB.accounts[id];var cur=id===DB.activeId;return '<div class="acct'+(cur?" cur":"")+'"><span class="ava">'+esc((a.name||"؟").slice(0,1))+'</span><span class="anm">'+esc(a.name||"بدون اسم")+'</span>'+(cur?'<span class="cur-tag">الحالي</span>':'<button class="pick" data-act="switch" data-id="'+id+'">تبديل</button>')+'<button class="iconbtn" data-act="rename" data-id="'+id+'">✎</button>'+(ids.length>1?'<button class="iconbtn" data-act="delacc" data-id="'+id+'">🗑</button>':'')+'</div>';}).join("");
+ return '<div class="overlay"><div class="sheet"><div class="shtitle">الحسابات</div><div class="shsub">لكل حساب أهدافه وسجلّاته المستقلة.</div>'+rows+'<div class="sheetbtns"><button class="btn-primary" data-act="newacc">＋ حساب جديد</button><button class="btn-ghost" data-act="closemodal">إغلاق</button></div></div></div>';}
 
-/* ===================== bind ===================== */
-function bind(){
- // nav
- app.querySelectorAll(".navbtn").forEach(function(b){b.onclick=function(){ui.tab=b.getAttribute("data-tab");render();};});
- // generic data-act clicks
- app.querySelectorAll("[data-act]").forEach(function(el){
-   var act=el.getAttribute("data-act");
-   if(act==="note"||act==="tgt")return;
-   el.addEventListener("click",function(ev){
-     switch(act){
-       case "accts": ui.modal="accts"; render(); break;
-       case "closemodal": ui.modal=null; render(); break;
-       case "dprev": ui.sel=addDays(ui.sel,-1); render(); break;
-       case "dnext": ui.sel=addDays(ui.sel,1); render(); break;
-       case "dtoday": ui.sel=today(); render(); break;
-       case "mprev": ui.month=addMonths(ui.month,-1); render(); break;
-       case "mnext": ui.month=addMonths(ui.month,1); render(); break;
-       case "goday": ui.sel=parseKey(el.getAttribute("data-k")); ui.tab="today"; render(); break;
-       case "lvl": { var gid=el.getAttribute("data-g"); var l=+el.getAttribute("data-l"); var cur=levelOf(ui.sel,gid); setLevel(ui.sel,gid,cur===l?0:l); render(); break; }
-       case "togglegoal": { var id=el.getAttribute("data-g"); ui.open=ui.open===id?null:id; render(); break; }
-       case "addgoal": { goals().push({id:uid("g"),emoji:"•",name:"هدف جديد",minLabel:"",reqLabel:"",weekly:"",monthly:"",days:[0,1,2,3,4,5,6]}); saveSoon(); render(); break; }
-       case "delgoal": { var gid2=el.getAttribute("data-g"); if(confirm("حذف هذا الهدف؟ (لن تتأثر الأيام السابقة بصريًا)")){ acc().config.goals=goals().filter(function(g){return g.id!==gid2;}); saveSoon(); render(); } break; }
-       case "wd": { var gid3=el.getAttribute("data-g"); var d=+el.getAttribute("data-d"); var g=goals().filter(function(x){return x.id===gid3;})[0]; if(g){ if(!g.days)g.days=[]; var ix=g.days.indexOf(d); if(ix>=0)g.days.splice(ix,1); else g.days.push(d); saveSoon(); render(); } break; }
-       case "reset": { if(confirm("مسح كل سجلات هذا الحساب؟ لا يمكن التراجع.")){ acc().logs={}; saveSoon(); render(); } break; }
-       case "switch": { DB.activeId=el.getAttribute("data-id"); ui.sel=today(); ui.month=firstOfMonth(today()); ui.modal=null; save(); render(); break; }
-       case "rename": { var id2=el.getAttribute("data-id"); var nm=prompt("اسم الحساب:",DB.accounts[id2].name||""); if(nm!=null){ var t=nm.trim(); if(t){ DB.accounts[id2].name=t; save(); render(); } } break; }
-       case "delacc": { var id3=el.getAttribute("data-id"); if(Object.keys(DB.accounts).length<=1)break; if(confirm("حذف هذا الحساب وكل بياناته؟")){ delete DB.accounts[id3]; if(DB.activeId===id3){DB.activeId=Object.keys(DB.accounts)[0]; ui.sel=today(); ui.month=firstOfMonth(today());} save(); render(); } break; }
-       case "newacc": { var nm2=prompt("اسم الحساب الجديد:",""); if(nm2!=null){ var t2=nm2.trim()||("حساب "+(Object.keys(DB.accounts).length+1)); var nid=uid("acc"); DB.accounts[nid]={name:t2,config:defaultConfig(),logs:{}}; DB.activeId=nid; ui.sel=today(); ui.month=firstOfMonth(today()); ui.modal=null; save(); render(); } break; }
-     }
-   });
- });
- // overlay click to close (only when clicking backdrop)
- var ov=app.querySelector(".overlay");
- if(ov){ ov.addEventListener("click",function(ev){ if(ev.target===ov){ui.modal=null;render();} }); var sh=ov.querySelector(".sheet"); if(sh) sh.addEventListener("click",function(ev){ev.stopPropagation();}); }
- // note (no re-render)
- var note=app.querySelector("#note");
- if(note) note.addEventListener("input",function(){setNote(ui.sel,note.value);});
- // settings text fields (no re-render)
- app.querySelectorAll(".editgoal").forEach(function(card){
-   var gid=card.getAttribute("data-gid");
-   card.querySelectorAll(".ip[data-f]").forEach(function(inp){
-     inp.addEventListener("input",function(){var g=goals().filter(function(x){return x.id===gid;})[0]; if(g){ g[inp.getAttribute("data-f")]=inp.value; saveSoon(); if(inp.getAttribute("data-f")==="name"){var avHeader=app.querySelector(".acctbtn .av");} } });
-   });
- });
- // target slider (no re-render)
- var tgt=app.querySelector("#tgt");
- if(tgt) tgt.addEventListener("input",function(){acc().config.target=+tgt.value; var v=app.querySelector("#tgtval"); if(v)v.textContent=toAr(+tgt.value)+"٪"; saveSoon();});
-}
 function parseKey(k){var p=k.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function resetSlot(){ui.openSlot=(keyOf(ui.sel)===keyOf(today()))?currentSlot():"fajr";}
 
+function bind(){
+ app.querySelectorAll(".navbtn").forEach(function(b){b.onclick=function(){ui.tab=b.getAttribute("data-tab");render();};});
+ app.querySelectorAll("[data-act]").forEach(function(el){var act=el.getAttribute("data-act");el.addEventListener("click",function(){switch(act){
+   case "accts": ui.modal="accts";render();break;
+   case "closemodal": ui.modal=null;render();break;
+   case "dprev": ui.sel=addDays(ui.sel,-1);resetSlot();render();break;
+   case "dnext": ui.sel=addDays(ui.sel,1);resetSlot();render();break;
+   case "dtoday": ui.sel=today();resetSlot();render();break;
+   case "goday": ui.sel=parseKey(el.getAttribute("data-k"));ui.tab="today";resetSlot();render();break;
+   case "wprev": ui.week=addDays(ui.week,-7);render();break;
+   case "wnext": ui.week=addDays(ui.week,7);render();break;
+   case "mprev": ui.month=addMonths(ui.month,-1);render();break;
+   case "mnext": ui.month=addMonths(ui.month,1);render();break;
+   case "slot": {var s=el.getAttribute("data-s");ui.openSlot=(ui.openSlot===s?null:s);render();break;}
+   case "togreflect": ui.openReflect=!ui.openReflect;render();break;
+   case "lvl": {var gid=el.getAttribute("data-g"),l=+el.getAttribute("data-l"),cur=levelOf(ui.sel,gid);setLevel(ui.sel,gid,cur===l?0:l);render();break;}
+   case "addextra": addExtra(ui.sel,el.getAttribute("data-s"));break;
+   case "extra": toggleExtra(ui.sel,el.getAttribute("data-x"));break;
+   case "delextra": delExtra(ui.sel,el.getAttribute("data-x"));break;
+   case "emo": toggleEmo(ui.sel,el.getAttribute("data-e"));break;
+   case "mood": setMoodRate(ui.sel,+el.getAttribute("data-m"));break;
+   case "togglegoal": {var id=el.getAttribute("data-g");ui.open=ui.open===id?null:id;render();break;}
+   case "setslot": {var g=goals().filter(function(x){return x.id===el.getAttribute("data-g");})[0];if(g){g.slot=el.getAttribute("data-s");saveSoon();render();}break;}
+   case "wd": {var g2=goals().filter(function(x){return x.id===el.getAttribute("data-g");})[0];if(g2){if(!g2.days)g2.days=[];var dd=+el.getAttribute("data-d"),ix=g2.days.indexOf(dd);if(ix>=0)g2.days.splice(ix,1);else g2.days.push(dd);saveSoon();render();}break;}
+   case "addgoal": goals().push({id:uid("g"),emoji:"•",name:"هدف جديد",slot:"fajr",minLabel:"",reqLabel:"",weekly:"",monthly:"",days:[0,1,2,3,4,5,6]});saveSoon();render();break;
+   case "delgoal": if(confirm("حذف هذا الهدف؟")){acc().config.goals=goals().filter(function(x){return x.id!==el.getAttribute("data-g");});saveSoon();render();}break;
+   case "addaxis": {var nm=prompt("اسم المحور:","");if(nm!=null&&nm.trim()){var cs=["#1E7A6B","#C2902B","#5E6E8C","#BC5A44","#7A6E9C","#D9773D"];axes().push({id:uid("ax"),name:nm.trim(),color:cs[axes().length%cs.length]});saveSoon();render();}break;}
+   case "delaxis": if(axes().length>1&&confirm("حذف هذا المحور؟")){acc().config.axes=axes().filter(function(x){return x.id!==el.getAttribute("data-a");});saveSoon();render();}break;
+   case "reset": if(confirm("مسح كل سجلات هذا الحساب؟ لا يمكن التراجع.")){acc().logs={};acc().weekly={};saveSoon();render();}break;
+   case "switch": DB.activeId=el.getAttribute("data-id");ui.sel=today();ui.month=firstOfMonth(today());ui.week=weekStart(today());resetSlot();ui.modal=null;save();render();break;
+   case "rename": {var id2=el.getAttribute("data-id"),nm2=prompt("اسم الحساب:",DB.accounts[id2].name||"");if(nm2!=null&&nm2.trim()){DB.accounts[id2].name=nm2.trim();save();render();}break;}
+   case "delacc": {var id3=el.getAttribute("data-id");if(Object.keys(DB.accounts).length<=1)break;if(confirm("حذف هذا الحساب وكل بياناته؟")){delete DB.accounts[id3];if(DB.activeId===id3)DB.activeId=Object.keys(DB.accounts)[0];resetSlot();save();render();}break;}
+   case "newacc": {var nm3=prompt("اسم الحساب الجديد:","");if(nm3!=null){var t=nm3.trim()||("حساب "+(Object.keys(DB.accounts).length+1));var nid=uid("acc");DB.accounts[nid]={name:t,config:defaultConfig(),logs:{},weekly:{}};DB.activeId=nid;ui.sel=today();ui.month=firstOfMonth(today());ui.week=weekStart(today());resetSlot();ui.modal=null;save();render();}break;}
+ }});});
+ var ov=app.querySelector(".overlay");if(ov){ov.addEventListener("click",function(ev){if(ev.target===ov){ui.modal=null;render();}});var sh=ov.querySelector(".sheet");if(sh)sh.addEventListener("click",function(ev){ev.stopPropagation();});}
+ // reflection text (no re-render)
+ var rs=app.querySelector("#r-self");if(rs)rs.addEventListener("input",function(){setField(ui.sel,"withSelf",rs.value);});
+ var rg=app.querySelector("#r-grat");if(rg)rg.addEventListener("input",function(){setField(ui.sel,"gratitude",rg.value);});
+ var rp=app.querySelector("#r-pat");if(rp)rp.addEventListener("input",function(){setField(ui.sel,"patience",rp.value);});
+ // weekly axes text (no re-render)
+ app.querySelectorAll("textarea[data-ax]").forEach(function(t){t.addEventListener("input",function(){setWeekly(keyOf(ui.week),t.getAttribute("data-ax"),t.value);});});
+ // settings goal fields (no re-render)
+ app.querySelectorAll(".editgoal").forEach(function(card){var gid=card.getAttribute("data-gid");card.querySelectorAll(".ip[data-f]").forEach(function(inp){inp.addEventListener("input",function(){var g=goals().filter(function(x){return x.id===gid;})[0];if(g){g[inp.getAttribute("data-f")]=inp.value;saveSoon();}});});});
+ // axis name fields (no re-render)
+ app.querySelectorAll(".ip[data-axf]").forEach(function(inp){inp.addEventListener("input",function(){var a=axes().filter(function(x){return x.id===inp.getAttribute("data-axf");})[0];if(a){a.name=inp.value;saveSoon();}});});
+ // target slider (no re-render)
+ var tgt=app.querySelector("#tgt");if(tgt)tgt.addEventListener("input",function(){acc().config.target=+tgt.value;var v=app.querySelector("#tgtval");if(v)v.textContent=toAr(+tgt.value)+"٪";saveSoon();});
+}
 render();
-/* best-effort PWA: nothing else needed; manifest + apple-touch-icon handle install */
 </script>
 </body>
 </html>
