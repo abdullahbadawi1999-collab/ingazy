@@ -188,6 +188,17 @@ button{font-family:inherit}
 .resetbtn{width:100%;padding:13px;border:1px solid #F0D6CF;background:#FCF1EE;color:var(--red);font-weight:700;border-radius:14px;cursor:pointer;font-size:13.5px}
 .foot{font-size:11.5px;color:var(--mute);text-align:center;padding:4px;line-height:1.7}
 .axedit{display:flex;gap:8px;align-items:center}
+.seg{display:flex;background:#F0ECE3;border-radius:13px;padding:4px;gap:4px}
+.seg button{flex:1;border:none;background:none;padding:10px;border-radius:10px;font-family:inherit;font-weight:700;font-size:13px;color:var(--ink2);cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(35,49,77,.08)}
+.rel{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:14px}
+.relhead{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.pips{display:flex;gap:8px;margin-bottom:11px}
+.pip{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;font-size:12.5px;font-weight:800;color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.relbox{width:100%;min-height:50px;border:1px solid var(--line);border-radius:12px;padding:11px;font-family:inherit;font-size:13.5px;color:var(--ink);resize:vertical;background:var(--paper);margin-bottom:9px}
+.relbox:last-child{margin-bottom:0}
+.relbox::placeholder{color:var(--mute)}
 
 .nav{position:sticky;bottom:0;display:flex;background:rgba(250,247,242,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom))}
 .navbtn{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0;color:var(--mute);border-radius:12px}
@@ -243,18 +254,24 @@ function defaultGoals(){return [
  {id:"side",emoji:"✨",name:"مهمة جانبية",slot:"isha",minLabel:"مهمة صغيرة",reqLabel:"مهمتان",weekly:"حسب الطاقة",monthly:"—",days:[0,1,2,3,4,5,6]}
 ];}
 function defaultAxes(){return [
- {id:"allah",name:"الله",color:"#1E7A6B"},{id:"me",name:"أنا",color:"#C2902B"},
+ {id:"allah",name:"الله",color:"#1E7A6B"},{id:"me",name:"نفسي",color:"#C2902B"},
  {id:"salman",name:"سلمان",color:"#5E6E8C"},{id:"bait",name:"البيت",color:"#BC5A44"}
 ];}
-function defaultConfig(){return {goals:defaultGoals(),target:60,axes:defaultAxes()};}
-function freshDB(){var id=uid("acc");var a={};a[id]={name:"حسابي",config:defaultConfig(),logs:{},weekly:{}};return {activeId:id,accounts:a};}
+function defaultRelations(){return [
+ {id:"self",name:"نفسي",color:"#C2902B"},{id:"allah",name:"الله",color:"#1E7A6B"},
+ {id:"wife",name:"زوجتي",color:"#B5546A"},{id:"salman",name:"سلمان",color:"#5E6E8C"},{id:"family",name:"الأهل",color:"#7A6E9C"}
+];}
+function defaultConfig(){return {goals:defaultGoals(),target:60,axes:defaultAxes(),relations:defaultRelations()};}
+function freshDB(){var id=uid("acc");var a={};a[id]={name:"حسابي",config:defaultConfig(),logs:{},weekly:{},relations:{}};return {activeId:id,accounts:a};}
 function migrate(d){try{Object.keys(d.accounts).forEach(function(k){var ac=d.accounts[k];
  if(!ac.config)ac.config=defaultConfig();
  if(typeof ac.config.target!=="number")ac.config.target=60;
  if(!Array.isArray(ac.config.goals)||!ac.config.goals.length)ac.config.goals=defaultGoals();
  if(!Array.isArray(ac.config.axes)||!ac.config.axes.length)ac.config.axes=defaultAxes();
+ ac.config.axes.forEach(function(a){if(a.id==="me"&&a.name==="أنا")a.name="نفسي";});
+ if(!Array.isArray(ac.config.relations)||!ac.config.relations.length)ac.config.relations=defaultRelations();
  ac.config.goals.forEach(function(g){if(!Array.isArray(g.days))g.days=[0,1,2,3,4,5,6];if(!g.slot)g.slot="fajr";if(g.minLabel==null)g.minLabel=g.min||"";if(g.reqLabel==null)g.reqLabel=g.max||g.daily||"";});
- if(!ac.logs)ac.logs={}; if(!ac.weekly)ac.weekly={};
+ if(!ac.logs)ac.logs={}; if(!ac.weekly)ac.weekly={}; if(!ac.relations)ac.relations={};
 });}catch(e){}return d;}
 function load(){try{var raw=localStorage.getItem(LS);if(raw){var d=JSON.parse(raw);if(d&&d.accounts&&d.activeId&&d.accounts[d.activeId])return migrate(d);}}catch(e){}
  try{var old=localStorage.getItem("masarApp_v1");if(old){var o=JSON.parse(old);if(o&&o.accounts)return migrate(o);}}catch(e){}
@@ -266,6 +283,7 @@ function toast(){var t=document.getElementById("toast");if(!t)return;t.classList
 function acc(){return DB.accounts[DB.activeId];}
 function goals(){return acc().config.goals;}
 function axes(){return acc().config.axes;}
+function relations(){return acc().config.relations;}
 function targetPct(){return acc().config.target;}
 
 function pad(n){return String(n).padStart(2,"0");}
@@ -287,9 +305,9 @@ var WD_SHORT=["أحد","اثنين","ثلاثاء","أربعاء","خميس","ج
 var WD_ORDER=[6,0,1,2,3,4,5];
 function currentSlot(){var h=new Date().getHours();if(h>=4&&h<12)return "fajr";if(h>=12&&h<15)return "dhuhr";if(h>=15&&h<18)return "asr";if(h>=18&&h<20)return "maghrib";return "isha";}
 
-function emptyLog(){return {levels:{},extras:[],mood:[],moodRate:0,withSelf:"",gratitude:"",patience:""};}
+function emptyLog(){return {levels:{},extras:[],mood:[],moodRate:0,withSelf:"",gratitude:"",patience:"",thoughts:""};}
 function logGet(d){return acc().logs[keyOf(d)]||emptyLog();}
-function ensureLog(d){var k=keyOf(d),l=acc().logs[k];if(!l){l=emptyLog();acc().logs[k]=l;}else{if(!l.levels)l.levels={};if(!l.extras)l.extras=[];if(!l.mood)l.mood=[];if(l.moodRate==null)l.moodRate=0;if(l.withSelf==null)l.withSelf="";if(l.gratitude==null)l.gratitude="";if(l.patience==null)l.patience="";}return l;}
+function ensureLog(d){var k=keyOf(d),l=acc().logs[k];if(!l){l=emptyLog();acc().logs[k]=l;}else{if(!l.levels)l.levels={};if(!l.extras)l.extras=[];if(!l.mood)l.mood=[];if(l.moodRate==null)l.moodRate=0;if(l.withSelf==null)l.withSelf="";if(l.gratitude==null)l.gratitude="";if(l.patience==null)l.patience="";if(l.thoughts==null)l.thoughts="";}return l;}
 function isDue(g,d){return (g.days||[0,1,2,3,4,5,6]).indexOf(d.getDay())>=0;}
 function dueGoals(d){return goals().filter(function(g){return isDue(g,d);});}
 function levelOf(d,gid){var l=acc().logs[keyOf(d)];return l&&l.levels&&l.levels[gid]?l.levels[gid]:0;}
@@ -310,13 +328,17 @@ function setField(d,f,v){ensureLog(d)[f]=v;saveSoon();}
 
 function weeklyGet(wk){return acc().weekly[wk]||{};}
 function setWeekly(wk,ax,v){if(!acc().weekly[wk])acc().weekly[wk]={};acc().weekly[wk][ax]=v;saveSoon();}
+function relEnsure(wk,rid){if(!acc().relations[wk])acc().relations[wk]={};if(!acc().relations[wk][rid])acc().relations[wk][rid]={rate:0,note:"",improve:""};return acc().relations[wk][rid];}
+function relGet(wk){return acc().relations[wk]||{};}
+function setRel(wk,rid,f,v){relEnsure(wk,rid)[f]=v;saveSoon();}
+function setRelRate(wk,rid,v){var r=relEnsure(wk,rid);r.rate=(r.rate===v?0:v);saveSoon();render();}
 
 function streakCount(){var s=0,d=today();if(!hitTarget(d))d=addDays(d,-1);while(hitTarget(d)){s++;d=addDays(d,-1);}return s;}
 function monthStats(month){var y=month.getFullYear(),m=month.getMonth(),n=daysInMonth(y,m);var sumP=0,cntP=0,tgt=0,gd={},gu={};goals().forEach(function(g){gd[g.id]=0;gu[g.id]=0;});
  for(var i=1;i<=n;i++){var d=new Date(y,m,i);var p=dayPct(d);if(p!=null&&dayScore(d)>0){sumP+=p;cntP++;}if(hitTarget(d))tgt++;goals().forEach(function(g){if(isDue(g,d)){gu[g.id]++;if(levelOf(d,g.id)>=1)gd[g.id]++;}});}
  return {avg:cntP?sumP/cntP:0,cntP:cntP,tgtDays:tgt,goalDone:gd,goalDue:gu,n:n};}
 
-var ui={tab:"today",sel:today(),month:firstOfMonth(today()),week:weekStart(today()),modal:null,openSlot:currentSlot(),openReflect:false,open:null};
+var ui={tab:"today",sel:today(),month:firstOfMonth(today()),week:weekStart(today()),weekTab:"goals",modal:null,openSlot:currentSlot(),openReflect:false,open:null};
 var app=document.getElementById("app");
 function render(){var h=headerHTML()+'<main class="content">'+views[ui.tab]()+'</main>'+navHTML();app.innerHTML=h;if(ui.modal)app.insertAdjacentHTML("beforeend",modalHTML());bind();}
 
@@ -367,6 +389,7 @@ function views_today(){var d=ui.sel,isT=keyOf(d)===keyOf(today());var log=logGet
    h+='<div><div class="rlabel">مع نفسي — مواقف مرّت عليّ اليوم</div><textarea class="rbox" id="r-self" placeholder="اكتب ما مرّ بك اليوم...">'+esc(log.withSelf||"")+'</textarea></div>';
    h+='<div><div class="rlabel">أحمد الله على</div><textarea class="rbox" id="r-grat" placeholder="نعمة أشكر الله عليها اليوم...">'+esc(log.gratitude||"")+'</textarea></div>';
    h+='<div><div class="rlabel">صبرت على</div><textarea class="rbox" id="r-pat" placeholder="ما صبرت عليه اليوم...">'+esc(log.patience||"")+'</textarea></div>';
+   h+='<div><div class="rlabel">فكّرت في</div><textarea class="rbox" id="r-think" placeholder="ما شغل تفكيري اليوم...">'+esc(log.thoughts||"")+'</textarea></div>';
  h+='</div>';}
  h+='</div>';
  // mini ribbon
@@ -377,10 +400,23 @@ function views_today(){var d=ui.sel,isT=keyOf(d)===keyOf(today());var log=logGet
 }
 
 /* ---------- Week ---------- */
-function views_week(){var ws=ui.week,we=addDays(ws,6),wk=keyOf(ws),data=weeklyGet(wk);
- var h='<div class="view"><div class="datenav card"><button class="arrow" data-act="wprev">‹</button><div class="dwrap"><div class="dgreg">أهداف الأسبوع</div><div class="weekrange">'+esc(dmLabel(ws))+' — '+esc(dmLabel(we))+'</div></div><button class="arrow" data-act="wnext">›</button></div>';
- h+='<div class="seclbl">اكتب أهدافك تحت كل محور</div>';
- axes().forEach(function(a){h+='<div class="axis"><div class="axishead"><span class="axisdot" style="background:'+(a.color||"#1E7A6B")+'"></span><span class="axisname">'+esc(a.name)+'</span></div><textarea class="axbox" data-ax="'+a.id+'" placeholder="أهدافي في محور '+esc(a.name)+' هذا الأسبوع...">'+esc(data[a.id]||"")+'</textarea></div>';});
+function views_week(){var ws=ui.week,we=addDays(ws,6),wk=keyOf(ws);
+ var h='<div class="view"><div class="datenav card"><button class="arrow" data-act="wprev">‹</button><div class="dwrap"><div class="dgreg">الأسبوع</div><div class="weekrange">'+esc(dmLabel(ws))+' — '+esc(dmLabel(we))+'</div></div><button class="arrow" data-act="wnext">›</button></div>';
+ h+='<div class="seg"><button class="'+(ui.weekTab!=="relations"?"on":"")+'" data-act="weektab" data-t="goals">مقاصد الأسبوع</button><button class="'+(ui.weekTab==="relations"?"on":"")+'" data-act="weektab" data-t="relations">تأمّلات العلاقات</button></div>';
+ if(ui.weekTab==="relations"){
+   var rdata=relGet(wk);
+   h+='<div class="seclbl">قيّم كل علاقة هذا الأسبوع وتأمّل فيها</div>';
+   relations().forEach(function(r){var rd=rdata[r.id]||{};
+     h+='<div class="rel"><div class="relhead"><span class="axisdot" style="background:'+(r.color||"#1E7A6B")+'"></span><span class="axisname">'+esc(r.name)+'</span></div>';
+     h+='<div class="pips">'+[1,2,3,4,5].map(function(v){return '<button class="pip'+((rd.rate||0)>=v?" on":"")+'" data-act="relrate" data-r="'+r.id+'" data-v="'+v+'">'+toAr(v)+'</button>';}).join("")+'</div>';
+     h+='<textarea class="relbox" data-relnote="'+r.id+'" placeholder="تأمّلي في علاقتي بـ'+esc(r.name)+' هذا الأسبوع...">'+esc(rd.note||"")+'</textarea>';
+     h+='<textarea class="relbox" data-relimp="'+r.id+'" placeholder="إيه اللي أقدر أحسّنه؟">'+esc(rd.improve||"")+'</textarea></div>';
+   });
+ }else{
+   var data=weeklyGet(wk);
+   h+='<div class="seclbl">تحت كل مقصد، اكتب الأهداف التي تنجزها هذا الأسبوع</div>';
+   axes().forEach(function(a){h+='<div class="axis"><div class="axishead"><span class="axisdot" style="background:'+(a.color||"#1E7A6B")+'"></span><span class="axisname">'+esc(a.name)+'</span></div><textarea class="axbox" data-ax="'+a.id+'" placeholder="أهداف أنجزها في مقصد '+esc(a.name)+' هذا الأسبوع... (سطر لكل هدف)">'+esc(data[a.id]||"")+'</textarea></div>';});
+ }
  h+='</div>';return h;}
 
 /* ---------- Tracker ---------- */
@@ -417,7 +453,8 @@ function views_settings(){var h='<div class="view"><div class="card"><div class=
   +'<label class="fl">أيام الهدف في الأسبوع</label><div class="wdchips">'+WD_ORDER.map(function(w){return '<button class="wd'+((g.days||[]).indexOf(w)>=0?" on":"")+'" data-act="wd" data-g="'+g.id+'" data-d="'+w+'">'+WD_SHORT[w]+'</button>';}).join("")+'</div>'
   +'<div class="two"><div><label class="fl">أسبوعيًا</label><input class="ip" data-f="weekly" value="'+esc(g.weekly||"")+'"></div><div><label class="fl">شهريًا</label><input class="ip" data-f="monthly" value="'+esc(g.monthly||"")+'"></div></div></div>';});
  h+='<button class="addbtn" data-act="addgoal">＋ إضافة هدف</button>';
- h+='<div class="seclbl">محاور الأسبوع</div><div class="card">'+axes().map(function(a){return '<div class="axedit" style="margin-bottom:9px"><span class="axisdot" style="background:'+(a.color||"#1E7A6B")+'"></span><input class="ip" data-axf="'+a.id+'" value="'+esc(a.name)+'"><button class="del" data-act="delaxis" data-a="'+a.id+'">حذف</button></div>';}).join("")+'<button class="addbtn" data-act="addaxis" style="margin-top:4px">＋ إضافة محور</button></div>';
+ h+='<div class="seclbl">مقاصد الأسبوع</div><div class="card">'+axes().map(function(a){return '<div class="axedit" style="margin-bottom:9px"><span class="axisdot" style="background:'+(a.color||"#1E7A6B")+'"></span><input class="ip" data-axf="'+a.id+'" value="'+esc(a.name)+'"><button class="del" data-act="delaxis" data-a="'+a.id+'">حذف</button></div>';}).join("")+'<button class="addbtn" data-act="addaxis" style="margin-top:4px">＋ إضافة مقصد</button></div>';
+ h+='<div class="seclbl">علاقات التأمّل الأسبوعي</div><div class="card">'+relations().map(function(r){return '<div class="axedit" style="margin-bottom:9px"><span class="axisdot" style="background:'+(r.color||"#1E7A6B")+'"></span><input class="ip" data-relf="'+r.id+'" value="'+esc(r.name)+'"><button class="del" data-act="delrel" data-r="'+r.id+'">حذف</button></div>';}).join("")+'<button class="addbtn" data-act="addrel" style="margin-top:4px">＋ إضافة علاقة</button></div>';
  h+='<button class="resetbtn" data-act="reset">مسح سجلات هذا الحساب</button>';
  h+='<div class="foot">يُحفظ تقدّمك تلقائيًا على هذا الجهاز. لإضافته كأيقونة: من المتصفح اختر «إضافة إلى الشاشة الرئيسية».</div></div>';return h;}
 
@@ -440,6 +477,10 @@ function bind(){
    case "goday": ui.sel=parseKey(el.getAttribute("data-k"));ui.tab="today";resetSlot();render();break;
    case "wprev": ui.week=addDays(ui.week,-7);render();break;
    case "wnext": ui.week=addDays(ui.week,7);render();break;
+   case "weektab": ui.weekTab=el.getAttribute("data-t");render();break;
+   case "relrate": setRelRate(keyOf(ui.week),el.getAttribute("data-r"),+el.getAttribute("data-v"));break;
+   case "addrel": {var rn=prompt("اسم العلاقة:","");if(rn!=null&&rn.trim()){var rc=["#C2902B","#1E7A6B","#B5546A","#5E6E8C","#7A6E9C","#D9773D"];relations().push({id:uid("rel"),name:rn.trim(),color:rc[relations().length%rc.length]});saveSoon();render();}break;}
+   case "delrel": if(relations().length>1&&confirm("حذف هذه العلاقة؟")){acc().config.relations=relations().filter(function(x){return x.id!==el.getAttribute("data-r");});saveSoon();render();}break;
    case "mprev": ui.month=addMonths(ui.month,-1);render();break;
    case "mnext": ui.month=addMonths(ui.month,1);render();break;
    case "slot": {var s=el.getAttribute("data-s");ui.openSlot=(ui.openSlot===s?null:s);render();break;}
@@ -455,8 +496,8 @@ function bind(){
    case "wd": {var g2=goals().filter(function(x){return x.id===el.getAttribute("data-g");})[0];if(g2){if(!g2.days)g2.days=[];var dd=+el.getAttribute("data-d"),ix=g2.days.indexOf(dd);if(ix>=0)g2.days.splice(ix,1);else g2.days.push(dd);saveSoon();render();}break;}
    case "addgoal": goals().push({id:uid("g"),emoji:"•",name:"هدف جديد",slot:"fajr",minLabel:"",reqLabel:"",weekly:"",monthly:"",days:[0,1,2,3,4,5,6]});saveSoon();render();break;
    case "delgoal": if(confirm("حذف هذا الهدف؟")){acc().config.goals=goals().filter(function(x){return x.id!==el.getAttribute("data-g");});saveSoon();render();}break;
-   case "addaxis": {var nm=prompt("اسم المحور:","");if(nm!=null&&nm.trim()){var cs=["#1E7A6B","#C2902B","#5E6E8C","#BC5A44","#7A6E9C","#D9773D"];axes().push({id:uid("ax"),name:nm.trim(),color:cs[axes().length%cs.length]});saveSoon();render();}break;}
-   case "delaxis": if(axes().length>1&&confirm("حذف هذا المحور؟")){acc().config.axes=axes().filter(function(x){return x.id!==el.getAttribute("data-a");});saveSoon();render();}break;
+   case "addaxis": {var nm=prompt("اسم المقصد:","");if(nm!=null&&nm.trim()){var cs=["#1E7A6B","#C2902B","#5E6E8C","#BC5A44","#7A6E9C","#D9773D"];axes().push({id:uid("ax"),name:nm.trim(),color:cs[axes().length%cs.length]});saveSoon();render();}break;}
+   case "delaxis": if(axes().length>1&&confirm("حذف هذا المقصد؟")){acc().config.axes=axes().filter(function(x){return x.id!==el.getAttribute("data-a");});saveSoon();render();}break;
    case "reset": if(confirm("مسح كل سجلات هذا الحساب؟ لا يمكن التراجع.")){acc().logs={};acc().weekly={};saveSoon();render();}break;
    case "switch": DB.activeId=el.getAttribute("data-id");ui.sel=today();ui.month=firstOfMonth(today());ui.week=weekStart(today());resetSlot();ui.modal=null;save();render();break;
    case "rename": {var id2=el.getAttribute("data-id"),nm2=prompt("اسم الحساب:",DB.accounts[id2].name||"");if(nm2!=null&&nm2.trim()){DB.accounts[id2].name=nm2.trim();save();render();}break;}
@@ -468,8 +509,14 @@ function bind(){
  var rs=app.querySelector("#r-self");if(rs)rs.addEventListener("input",function(){setField(ui.sel,"withSelf",rs.value);});
  var rg=app.querySelector("#r-grat");if(rg)rg.addEventListener("input",function(){setField(ui.sel,"gratitude",rg.value);});
  var rp=app.querySelector("#r-pat");if(rp)rp.addEventListener("input",function(){setField(ui.sel,"patience",rp.value);});
+ var rt=app.querySelector("#r-think");if(rt)rt.addEventListener("input",function(){setField(ui.sel,"thoughts",rt.value);});
  // weekly axes text (no re-render)
  app.querySelectorAll("textarea[data-ax]").forEach(function(t){t.addEventListener("input",function(){setWeekly(keyOf(ui.week),t.getAttribute("data-ax"),t.value);});});
+ // relation reflection boxes (no re-render)
+ app.querySelectorAll("textarea[data-relnote]").forEach(function(t){t.addEventListener("input",function(){setRel(keyOf(ui.week),t.getAttribute("data-relnote"),"note",t.value);});});
+ app.querySelectorAll("textarea[data-relimp]").forEach(function(t){t.addEventListener("input",function(){setRel(keyOf(ui.week),t.getAttribute("data-relimp"),"improve",t.value);});});
+ // relation name fields (no re-render)
+ app.querySelectorAll(".ip[data-relf]").forEach(function(inp){inp.addEventListener("input",function(){var r=relations().filter(function(x){return x.id===inp.getAttribute("data-relf");})[0];if(r){r.name=inp.value;saveSoon();}});});
  // settings goal fields (no re-render)
  app.querySelectorAll(".editgoal").forEach(function(card){var gid=card.getAttribute("data-gid");card.querySelectorAll(".ip[data-f]").forEach(function(inp){inp.addEventListener("input",function(){var g=goals().filter(function(x){return x.id===gid;})[0];if(g){g[inp.getAttribute("data-f")]=inp.value;saveSoon();}});});});
  // axis name fields (no re-render)
